@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="847dafc3-0f25-4843-9a2a-b9cfedd3d1d4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="bln" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="thn" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     pny_barang.`no_pny` AS pny_barang_no_pny,
+     pny_barang.`barcode` AS pny_barang_barcode,
+     pny_barang.`tgl_pny` AS pny_barang_tgl_pny,
+     pny_barang.`ket_pny` AS pny_barang_ket_pny,
+     pny_barang.`harga_pny` AS pny_barang_harga_pny,
+     pny_barang.`jml_pny` AS pny_barang_jml_pny,
+     pny_barang.`total_pny` AS pny_barang_total_pny,
+     barang.`barcode` AS barang_barcode,
+     barang.`nama_barang` AS barang_nama_barang,
+     barang.`jenis_brg` AS barang_jenis_brg,
+     date_format(pny_barang.`tgl_pny`,'%M') AS bulan
+FROM
+     `barang` barang INNER JOIN `pny_barang` pny_barang ON barang.`barcode` = pny_barang.`barcode`
+WHERE
+month(tgl_pny)=$P{bln} and year(tgl_pny)=$P{thn}]]>
+	</queryString>
+	<field name="pny_barang_no_pny" class="java.lang.String"/>
+	<field name="pny_barang_barcode" class="java.lang.String"/>
+	<field name="pny_barang_tgl_pny" class="java.sql.Date"/>
+	<field name="pny_barang_ket_pny" class="java.lang.String"/>
+	<field name="pny_barang_harga_pny" class="java.lang.Double"/>
+	<field name="pny_barang_jml_pny" class="java.lang.Double"/>
+	<field name="pny_barang_total_pny" class="java.lang.Double"/>
+	<field name="barang_barcode" class="java.lang.String"/>
+	<field name="barang_nama_barang" class="java.lang.String"/>
+	<field name="barang_jenis_brg" class="java.lang.String"/>
+	<field name="bulan" class="java.lang.String"/>
+	<variable name="pny_barang_total_pny_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{pny_barang_total_pny}]]></variableExpression>
+	</variable>
+	<group name="pny_barang_no_pny">
+		<groupExpression><![CDATA[$F{pny_barang_no_pny}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="343" y="24" width="26" height="20" uuid="7d7a654b-bcae-4964-8edc-b59d4d50113d"/>
+				<textFieldExpression><![CDATA[$F{bulan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="369" y="24" width="38" height="20" uuid="992b9e31-b360-4c1f-9315-d65691c4a270"/>
+				<textFieldExpression><![CDATA[$P{thn}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="0" width="152" height="20" uuid="604e9eb0-523a-418b-b3ac-cac07993171e"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Penyesuaian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="24" width="42" height="20" uuid="16378b05-5cce-4e93-8998-1c77fe96b1a9"/>
+				<text><![CDATA[Periode :]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="669" y="0" width="111" height="20" uuid="79b8a014-91b9-46f0-af6c-d611e845a3e8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="569" y="0" width="100" height="20" uuid="ed641038-d2b2-4969-9192-503f1ab240f2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="469" y="0" width="100" height="20" uuid="91577938-38d2-41ee-a21c-757eb20edede"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="369" y="0" width="100" height="20" uuid="2c941018-adba-4300-a2b6-f4b76ca98943"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="284" y="0" width="85" height="20" uuid="db014ee4-74d9-4f5d-b4fe-e30e4515cb03"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="170" y="0" width="114" height="20" uuid="0d7d2c28-0234-45c9-b718-c2a3c61fa25f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="81" y="0" width="89" height="20" uuid="2d7af572-ccab-4f57-938e-877c7244e9a0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="81" height="20" uuid="a58319c9-76f5-4b04-9fdb-526b17788b10"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="81" height="20" uuid="fdb3e72e-ea19-4369-9776-e50083f55a7b"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="0" width="89" height="20" uuid="20a6ed68-48c5-42e1-b9a0-91407b767b66"/>
+				<text><![CDATA[No Penyesuaian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="0" width="85" height="20" uuid="423842c1-986c-4b59-8056-2a2ecb970333"/>
+				<text><![CDATA[Barcode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="0" width="114" height="20" uuid="49476697-77a1-4466-a270-1b3e5ca99068"/>
+				<text><![CDATA[Keterangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="0" width="100" height="20" uuid="9c687f72-51b2-40a9-8ed4-d85f442694fb"/>
+				<text><![CDATA[Nama Barang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="469" y="0" width="100" height="20" uuid="a4300d14-0c8a-4b06-93b5-9e8740170d23"/>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="569" y="0" width="100" height="20" uuid="5c137fe1-8e42-43f4-8e5b-1deb841a9673"/>
+				<text><![CDATA[Harga Satuan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="669" y="0" width="111" height="20" uuid="97138516-7df2-4001-b863-1a3fd060dba7"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="669" y="0" width="111" height="20" uuid="adde10a9-3c5d-4fad-893e-2a0e65987f23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="569" y="0" width="100" height="20" uuid="90259984-ee43-4286-9724-262ba106e273"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="469" y="0" width="100" height="20" uuid="06e5917d-f932-4eb6-8604-112d3cbd29df"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="369" y="0" width="100" height="20" uuid="3c3fc89e-edc4-40c0-bb8a-c796bcd6f6f8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="284" y="0" width="85" height="20" uuid="9053a3d6-087a-47f2-bc93-ced45481289c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="170" y="0" width="114" height="20" uuid="ad218af2-48ba-4a95-8a5f-cd095b7890ed"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="81" y="0" width="89" height="20" uuid="9785717b-f9f2-4d6e-bb71-1aef6e3b557c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="81" height="20" uuid="270ee393-371d-4588-9bd4-677703542c95"/>
+			</rectangle>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="81" height="20" uuid="7abe4c78-846f-4123-94cf-fa1cfd3075e2"/>
+				<textFieldExpression><![CDATA[$F{pny_barang_tgl_pny}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="81" y="0" width="89" height="20" uuid="13ce195f-ed5c-4c4c-942c-700f75b46647"/>
+				<textFieldExpression><![CDATA[$F{pny_barang_no_pny}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="284" y="0" width="85" height="20" uuid="b0e193b6-1391-4866-8dde-481600f4276b"/>
+				<textFieldExpression><![CDATA[$F{barang_barcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="0" width="114" height="20" uuid="fa2f3ee6-8723-4916-951b-54baea90fc30"/>
+				<textFieldExpression><![CDATA[$F{pny_barang_ket_pny}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="469" y="0" width="100" height="20" uuid="bea04e45-8375-44e7-a2f9-3bab0d661073"/>
+				<textFieldExpression><![CDATA[$F{pny_barang_jml_pny}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="586" y="0" width="83" height="20" uuid="daf2bffe-b8ef-4947-bc10-ef8630efe2fa"/>
+				<textFieldExpression><![CDATA[$F{pny_barang_harga_pny}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="686" y="0" width="94" height="20" uuid="508251e2-28eb-48d0-baf1-c7997643c2b2"/>
+				<textFieldExpression><![CDATA[$F{pny_barang_total_pny}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="569" y="0" width="17" height="20" uuid="dbb1be18-8c62-45d3-8015-7a1c721cfd83"/>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="669" y="0" width="17" height="20" uuid="96ec613b-d346-4cf1-86a2-9ec5744b303c"/>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="369" y="0" width="100" height="20" uuid="4c5ad485-d1f3-492c-9cdc-1fa9905bddc0"/>
+				<textFieldExpression><![CDATA[$F{barang_nama_barang}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="669" height="20" uuid="fd5fc946-33b1-4156-bebf-e5705741e58e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="669" y="0" width="111" height="20" uuid="99aec0c5-215d-4074-bc2d-4d238d36c775"/>
+			</rectangle>
+			<textField pattern="#,##0.00">
+				<reportElement x="686" y="0" width="94" height="20" uuid="8ee300a6-413d-4ea3-ae92-08a1810e421d"/>
+				<textFieldExpression><![CDATA[$V{pny_barang_total_pny_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="284" y="0" width="100" height="20" uuid="08afeebb-4fe5-465b-a7ae-5893f5c0cf19"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="669" y="0" width="17" height="20" uuid="42cb6e18-d4c3-4366-9739-361dbe405ef0"/>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

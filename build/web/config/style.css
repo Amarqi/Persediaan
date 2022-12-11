@@ -1,0 +1,249 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #6A5ACD;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    color: #222;
+    margin: 0 auto;
+}
+
+#wrap{
+    margin: 0 auto;
+    width: 965px;
+}
+
+#header{
+    height: 130px;
+    margin: 0 auto;
+    width: 965px;
+    background: red;
+}
+
+#header h1{
+    font-size: 20px;
+    letter-spacing: -1px;
+    padding: 15px 0 0 20px;
+    color: #fff;
+}
+
+#header h1 a{
+    color: #fff;
+    text-decoration: none;
+    font-weiht: 100;
+    letter-spacing: -2px;
+}
+
+#header h1 a:hover{
+    color: activecaption;
+    
+}
+
+table{
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td,th { border: 1px solid #22b22; height: 30px; }
+
+th{
+    background: #90ee90;
+    font-weight: bold;
+}
+
+td{
+    background: #d3fd9d;
+}
+
+a{
+    text-decoration: none;
+    color: #75B03C;
+   
+}
+
+a:hover{
+    text-decoration: underline;
+    color: #111;
+}
+
+#header img{
+    width: 110px;
+    height: 110px;
+    float: right;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#header h2{
+    font-size: 19px;
+    letter-spacing: -1px;
+    padding: 5px 0 0 20px;
+    color: #CIDAD7;
+    font-weight: 100;
+}
+
+#header h3{
+    font-size: 13px;
+    letter-spacing: -1px;
+    padding: 5px 0 0 20px;
+    color: #CIDAD7;
+    font-weight: 100;
+}
+
+#menu{
+    height: 30px;
+    margin: 0 auto;
+    width: 965px;
+    line-height: 30px;
+    background: #FFFF00;
+}
+
+#menu ul{
+  list-style-type: none;
+  padding-left: 20px;  
+}
+
+#menu ul li{
+    display: block;
+    float: left;
+}
+
+#menu ul li a{
+    padding: 0 20px 0 0;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    color: #228b22;
+    padding: 8px 10px 7px 10px;
+}
+
+#menu ul li a:hover{
+    color: #222;
+    text-decoration: none;
+}
+
+#content{
+    background-color: floralwhite;
+    padding: 0 10px;
+}
+
+.right{
+    float: right;
+    width: 745px;
+    text-align: justify;
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+.right h2{
+   line-height: 30px;
+   height: 30px;
+   padding-left: 10px;
+   font-size: 18px;
+   font-weight: 100;
+   background: #61984;
+}
+
+.right h2 a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.right h2 a:hover{
+    color: #111;
+}
+
+.left{
+    float: left;
+    width: 180px;
+    padding-top: 5px;
+}
+
+.left h2{
+    margin: 5px 0 0 0;
+    line-height: 30px;
+    height: 30px;
+    padding-left: 10px;
+    font-size: 13px;
+    background: #d3fd9d;
+    color: #228b22;
+}
+
+.left ul{
+    padding: 10px 0 15px 20px;
+    list-style-type: square;
+    color: #75B03C;
+}
+
+.left ul li a{text-decoratin: none; font-weight: 600px;}
+
+.left ul li a:hover{color: #111; }
+
+.footer{
+    text-align: center;
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 40px;
+    border-top: 1px dotted #aaa;
+    padding-top: 10px;
+}
+
+.footer a{color: blue}
+.footer a:hover{color: #111;}
+
+.isi td{
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    background: #ffffff;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 8px;
+    padding-right: 8px;
+    color: #006400;
+    font: 12px "Tahoma", Arial,sans-serif;
+}
+
+.head td{
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    border-top: 1px solid #C1DAD7;
+    background: #90ee90;
+    letter-spacing: 1px;
+    padding: 4px 2px 4px 10px;
+    color: #000080;
+    text-align: center;
+    font: 13px "Tahoma", Arial,sans-serif;
+}
+
+.botton{
+    margin-left: 0;
+    padding: 4px 4px;
+    border: none;
+    background: #E9CF16;
+    font-size: 12px;
+    color: #ffffff;
+    font-family: "Tahoma";
+    width: 70px;
+}
+
+.bottonlap{
+    margin-left: 0;
+    padding: 4px 4px;
+    border: none;
+    background: #E9CF16;
+    font-size: 13px;
+    color: #ffffff;
+    font-family: "Tahoma";
+    width: 200px;
+}
+
+.botton a:hover{background: #90ee90;}
+

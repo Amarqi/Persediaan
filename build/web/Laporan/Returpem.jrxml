@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="165f59b3-79f1-4ae7-a8be-993e2bc2a949">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="trx" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     barang.`barcode` AS barang_barcode,
+     barang.`nama_barang` AS barang_nama_barang,
+     barang.`jenis_brg` AS barang_jenis_brg,
+     returpem.`no_returpem` AS returpem_no_returpem,
+     returpem.`no_masuk` AS returpem_no_masuk,
+     returpem.`ket_returpem` AS returpem_ket_returpem,
+     returpem.`tgl_returpem` AS returpem_tgl_returpem,
+     returpem.`total_returpem` AS returpem_total_returpem,
+     detail_returpem.`no_returpem` AS detail_returpem_no_returpem,
+     detail_returpem.`barcode` AS detail_returpem_barcode,
+     detail_returpem.`jml_returpem` AS detail_returpem_jml_returpem,
+     detail_returpem.`harga_returpem` AS detail_returpem_harga_returpem,
+     barang_msk.`no_masuk` AS barang_msk_no_masuk,
+     barang_msk.`id_user` AS barang_msk_id_user,
+     barang_msk.`kode_supp` AS barang_msk_kode_supp,
+     barang_msk.`tgl_msk` AS barang_msk_tgl_msk,
+     barang_msk.`total_msk` AS barang_msk_total_msk,
+     supplier.`kode_supp` AS supplier_kode_supp,
+     supplier.`nama_supp` AS supplier_nama_supp,
+     supplier.`alamat` AS supplier_alamat,
+     supplier.`telp` AS supplier_telp
+FROM
+     `returpem` returpem INNER JOIN `detail_returpem` detail_returpem ON returpem.`no_returpem` = detail_returpem.`no_returpem`
+     INNER JOIN `barang` barang ON detail_returpem.`barcode` = barang.`barcode`
+     INNER JOIN `barang_msk` barang_msk ON returpem.`no_masuk` = barang_msk.`no_masuk`
+     INNER JOIN `supplier` supplier ON barang_msk.`kode_supp` = supplier.`kode_supp`
+WHERE
+returpem.`no_returpem`=$P{trx}]]>
+	</queryString>
+	<field name="barang_barcode" class="java.lang.String"/>
+	<field name="barang_nama_barang" class="java.lang.String"/>
+	<field name="barang_jenis_brg" class="java.lang.String"/>
+	<field name="returpem_no_returpem" class="java.lang.String"/>
+	<field name="returpem_no_masuk" class="java.lang.String"/>
+	<field name="returpem_ket_returpem" class="java.lang.String"/>
+	<field name="returpem_tgl_returpem" class="java.sql.Date"/>
+	<field name="returpem_total_returpem" class="java.lang.Double"/>
+	<field name="detail_returpem_no_returpem" class="java.lang.String"/>
+	<field name="detail_returpem_barcode" class="java.lang.String"/>
+	<field name="detail_returpem_jml_returpem" class="java.lang.Double"/>
+	<field name="detail_returpem_harga_returpem" class="java.lang.Double"/>
+	<field name="barang_msk_no_masuk" class="java.lang.String"/>
+	<field name="barang_msk_id_user" class="java.lang.String"/>
+	<field name="barang_msk_kode_supp" class="java.lang.String"/>
+	<field name="barang_msk_tgl_msk" class="java.sql.Date"/>
+	<field name="barang_msk_total_msk" class="java.lang.Double"/>
+	<field name="supplier_kode_supp" class="java.lang.String"/>
+	<field name="supplier_nama_supp" class="java.lang.String"/>
+	<field name="supplier_alamat" class="java.lang.String"/>
+	<field name="supplier_telp" class="java.lang.String"/>
+	<variable name="returpem_total_returpem_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{returpem_total_returpem}]]></variableExpression>
+	</variable>
+	<group name="returpem_no_returpem">
+		<groupExpression><![CDATA[$F{returpem_no_returpem}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="146" height="20" uuid="6d68d9ce-d54e-4010-978b-1c840e061b98"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RETURN PEMBELIAN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="91" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="512" height="91" uuid="3d96434c-61ab-4d2d-9998-256ecc2228b9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="112" height="20" uuid="08f1dbf9-6f6e-4e99-9ad4-01f1eef0f2e9"/>
+				<text><![CDATA[No Return Pembelian]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="129" y="0" width="100" height="20" uuid="d0b9adeb-d5eb-4066-b289-406aabb8796c"/>
+				<textFieldExpression><![CDATA[$F{returpem_no_returpem}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20" uuid="df815f91-de8a-4549-af58-50dd414339a1"/>
+				<text><![CDATA[Tanggal Return]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="129" y="20" width="100" height="20" uuid="64dff3bc-ffdd-47ff-b562-ae4e4be677d0"/>
+				<textFieldExpression><![CDATA[$F{returpem_tgl_returpem}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="278" y="0" width="100" height="20" uuid="7e73e69c-cf24-4dd5-a6fa-5310be95a52e"/>
+				<text><![CDATA[No Masuk]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="412" y="0" width="100" height="20" uuid="b7c669ae-5d1f-451a-8e14-003b7f9bf06e"/>
+				<textFieldExpression><![CDATA[$F{returpem_no_masuk}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="20" uuid="78df90c0-1cdc-4922-895b-e515a620e40f"/>
+				<text><![CDATA[Alasan Return]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="129" y="40" width="100" height="20" uuid="9880b9f0-df3d-4257-b86f-151c54de1924"/>
+				<textFieldExpression><![CDATA[$F{returpem_ket_returpem}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="278" y="40" width="100" height="20" uuid="55c9c4cf-f03b-48da-a2dd-27e83937dfc8"/>
+				<text><![CDATA[Supplier]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="412" y="40" width="100" height="20" uuid="35117354-328c-4e76-953c-92455eead431"/>
+				<textFieldExpression><![CDATA[$F{supplier_nama_supp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="278" y="20" width="117" height="20" uuid="30a50f68-8b83-4804-8e06-ffbf22fe1d41"/>
+				<text><![CDATA[Tanggal Barang Masuk]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="412" y="20" width="100" height="20" uuid="b34cfddc-d363-421e-8b9b-254a40e2ddba"/>
+				<textFieldExpression><![CDATA[$F{barang_msk_tgl_msk}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="278" y="60" width="100" height="20" uuid="3c551ae2-3a24-43b7-a312-0a23b20ced37"/>
+				<text><![CDATA[Admin]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="412" y="60" width="100" height="20" uuid="215c7dd2-025e-4fe3-a378-d83ee3840414"/>
+				<textFieldExpression><![CDATA[$F{barang_msk_id_user}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="124" y="0" width="5" height="20" uuid="79269c06-a7c4-45d7-81f9-211643defccf"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="20" width="5" height="20" uuid="f5778e26-6947-4937-87ef-b8f3fab261ca"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="40" width="5" height="20" uuid="03a915a6-a471-42da-9e94-e3254de02a65"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="0" width="5" height="20" uuid="187d7915-94bd-493b-82bc-bdf1cc557755"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="20" width="5" height="20" uuid="12d23271-6e63-4f89-abf0-73dbd78a4424"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="40" width="5" height="20" uuid="468fe62e-f439-4bca-a8bd-40d3eb10cd74"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="60" width="5" height="20" uuid="66ae1664-f3e1-48e0-9d61-a99cff735aa8"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="400" y="0" width="112" height="20" uuid="a62910e5-af58-4fa4-8e24-0c191fd83f14"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="0" width="100" height="20" uuid="9577db7e-ea71-4da3-ad96-2559ac33f75f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="200" y="0" width="100" height="20" uuid="7aeef55d-b6e7-4b2e-a6f6-359fd72206dd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="100" y="0" width="100" height="20" uuid="72d80dbc-826e-45f9-b901-b3ecc0cae9fb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="100" height="20" uuid="df60fb8d-6d7c-4f87-bad6-e2ba44bde931"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="5a5ce754-5857-41f5-a84f-36abfa4fb319"/>
+				<text><![CDATA[Barcode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="1d720924-e2ea-41e3-be98-385dfa47681b"/>
+				<text><![CDATA[Jumlah Barang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="3bb7e9a4-7966-43ab-ab6b-daa6ba13d68f"/>
+				<text><![CDATA[Harga Satuan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="112" height="20" uuid="7428ede5-91a2-4f4e-841b-4fdb1ffb8319"/>
+				<text><![CDATA[Jumlah Return]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="907ebec0-e07f-4a12-b619-46ceafdc4d1c"/>
+				<text><![CDATA[Nama Barang]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement x="400" y="1" width="112" height="20" uuid="0aff1018-fc28-427d-b663-1fb1d51aaede"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="1" width="100" height="20" uuid="97e2438d-2f18-4f04-aced-26f540522e15"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="200" y="1" width="100" height="20" uuid="909ce530-19b0-4e80-9b29-66c7689cc2de"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="100" y="1" width="100" height="20" uuid="16a114cb-4b8b-4281-8159-99c22690b54a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="1" width="100" height="20" uuid="b2af9e4b-1ddd-47bb-a084-af087b1290bb"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f20615e3-73c3-4eb7-8798-e51fd34a5200"/>
+				<textFieldExpression><![CDATA[$F{detail_returpem_barcode}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="200" y="1" width="100" height="20" uuid="d08f54ee-753b-4eb7-93b5-532eb4e39a1d"/>
+				<textFieldExpression><![CDATA[$F{detail_returpem_jml_returpem}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="1" width="100" height="20" uuid="693d6d34-de47-4c5d-a73d-80aca530e96f"/>
+				<textFieldExpression><![CDATA[$F{barang_nama_barang}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="318" y="1" width="82" height="20" uuid="6b22d3a5-1cb2-49cf-abf2-8789f6c99a4d"/>
+				<textFieldExpression><![CDATA[$F{detail_returpem_harga_returpem}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="1" width="18" height="20" uuid="17b0db5f-ccd3-4942-a66d-434269656be8"/>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="418" y="1" width="94" height="20" uuid="b073d4b4-234d-4df9-a7a6-e6efc940b4f8"/>
+				<textFieldExpression><![CDATA[$F{returpem_total_returpem}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="0" width="18" height="20" uuid="e1d80a09-15b6-4a91-8424-b6f4e679b7b4"/>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<rectangle>
+				<reportElement x="400" y="0" width="112" height="20" uuid="9a9ee7d1-dc39-4281-8666-591e85a55fa6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="400" height="20" uuid="4a071797-9712-4670-a155-0e2d9e23dc6f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="178" y="0" width="100" height="20" uuid="8eebe159-7977-4789-8bfa-48d4b9abe2e0"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="418" y="0" width="94" height="20" uuid="8c357c5f-4ae3-4f91-b371-8cc915da7942"/>
+				<textFieldExpression><![CDATA[$V{returpem_total_returpem_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="0" width="18" height="20" uuid="c979f643-1d54-4f2f-9135-a8e7a66e1b44"/>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
